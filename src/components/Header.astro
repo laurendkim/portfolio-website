@@ -1,0 +1,23 @@
+---
+// Floating, inverting header. Always shows name + About/Contact/Archive.
+// On project pages (pass `current` = slug), also shows the P1–P6 project nav.
+import { projects } from '../data/projects.js';
+const { current = null } = Astro.props;
+---
+<header class="site-header">
+  <h1 class="brand"><a href="/">Lauren Kim</a></h1>
+  <nav class="header-links" aria-label="Pages">
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/archive">Archive</a>
+  </nav>
+  {current && (
+    <nav class="project-nav" aria-label="Projects">
+      {projects.map((p, i) => (
+        <a href={`/projects/${p.slug}`} class:list={{ active: p.slug === current }}>
+          P{i + 1}&nbsp;&nbsp;{p.caption}
+        </a>
+      ))}
+    </nav>
+  )}
+</header>

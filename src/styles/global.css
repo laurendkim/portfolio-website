@@ -1,0 +1,134 @@
+:root {
+  --bg: #f3f1ee;
+  --ink: #000000;
+  --ink-85: rgba(0, 0, 0, 0.85);
+  --ink-75: rgba(0, 0, 0, 0.75);
+  --ink-60: rgba(0, 0, 0, 0.60);
+  /* Hanken Grotesk — Lauren's chosen brand typeface (free, OFL; also used on her résumé). */
+  --font: "Hanken Grotesk Variable", "Hanken Grotesk", -apple-system,
+    BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --letter: 0.03em;
+  --pad: 2rem;
+  --gutter: 0.5rem;
+}
+
+/* RESPONSIVE ROOT: rem-based sizes scale with window width (like the Cargo site). */
+html { font-size: clamp(11px, 1.08vw, 18px); }
+@media (max-width: 800px) { html { font-size: clamp(13px, 3vw, 18px); } }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.2rem;
+  line-height: 1.65;
+  letter-spacing: var(--letter);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+/* ---- Custom cursor: small square that inverts over content (fine pointers only) ---- */
+.cursor {
+  position: fixed; top: 0; left: 0;
+  width: 11px; height: 11px;
+  background: #ffffff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+@media (hover: hover) and (pointer: fine) { * { cursor: none !important; } }
+
+/* ---- Scroll fade-in (progressive enhancement via .has-js) ---- */
+.has-js .reveal { opacity: 0; transition: opacity 0.7s ease; }
+.has-js .reveal.is-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .has-js .reveal { opacity: 1; transition: none; }
+}
+
+/* ---- Floating header: inverts against whatever is behind it ---- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100;
+  padding: var(--pad);
+  color: #ffffff;
+  mix-blend-mode: difference;
+  letter-spacing: var(--letter);
+}
+.site-header a { color: #ffffff; }
+.site-header a:hover { text-decoration: underline; }
+/* Header links: compact, refined, bold. Open spacing between sections. */
+.brand { margin: 0 0 3.5rem; font-size: 1.2rem; font-weight: 700; line-height: 1.25; }
+.header-links { display: flex; flex-direction: column; font-size: 1.2rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
+.project-nav { margin-top: 3.5rem; display: flex; flex-direction: column; font-size: 1.2rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
+.project-nav a.active { text-decoration: underline; }
+
+/* ---- Homepage: staggered two-column grid with varied image widths ---- */
+/* Flush to ALL edges: no side bumper, and no top padding so the FIRST image (right column) sits
+   flush to the top edge. The left column is pushed down (margin-top) to clear the floating header.
+   A small gap lets the images run larger. */
+.home { padding: 0 0 var(--pad); }
+.grid { display: flex; gap: 2rem; align-items: flex-start; }
+.col { flex: 1; display: flex; flex-direction: column; gap: 11rem; }
+.col-left { margin-top: 13rem; align-items: flex-start; }
+.col-right { align-items: flex-end; }
+.proj { width: var(--w, 100%); }
+.proj-img { width: 100%; }          /* no hover fade — stays the same */
+.proj-meta { margin-top: 0.7rem; }
+.proj-caption { margin: 0; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.018em; line-height: 1.0; }
+.proj-caption a:hover { text-decoration: underline; }
+.proj-number {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@media (max-width: 800px) {
+  .grid { flex-direction: column; gap: 6rem; }
+  .col { gap: 6rem; }
+  .col-left { margin-top: 0; align-items: stretch; }
+  .col-right { align-items: stretch; }
+  .proj { width: 100% !important; }
+}
+
+/* ---- Project page (full-bleed images, inset text) ---- */
+.project { padding: 0; }
+.project-top { display: flex; justify-content: flex-end; padding: var(--pad); margin-bottom: 0.5rem; }
+.project-intro { max-width: 34rem; }
+.project-title { margin: 0 0 0.3rem; font-size: 1.2rem; font-weight: 700; color: var(--ink-85); line-height: 1.1; }
+.project-client { margin: 0 0 1rem; font-size: 1.2rem; color: var(--ink-60); font-style: italic; }
+.project-desc { margin: 0; font-size: 1.2rem; line-height: 1.2; color: var(--ink-75); }
+.seq { display: flex; flex-direction: column; gap: var(--gutter); }
+.seq img { width: 100%; }
+.seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+
+@media (max-width: 800px) {
+  .project-top { justify-content: flex-start; padding-top: 9rem; }
+  .seq .two { grid-template-columns: 1fr; }
+}
+
+/* ---- Stub pages ---- */
+.stub { min-height: 70vh; padding: 9rem var(--pad) var(--pad); display: flex; align-items: center; }
+.stub p { font-size: 1.2rem; color: var(--ink-60); }
+
+/* ---- A11y ---- */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+.skip-link { position: absolute; left: -9999px; top: 8px; z-index: 200; background: #000; color: #fff; padding: 8px 14px; }
+.skip-link:focus { left: var(--pad); }
+
+/* ---- Footer ---- */
+.site-footer { padding: 4rem var(--pad) var(--pad); font-size: 1.2rem; font-weight: 700; color: var(--ink); }

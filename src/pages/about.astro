@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+---
+<Base title="About — Lauren Kim" description="Textile and print designer based in New York.">
+  <Header />
+  <article class="page-about">
+    <div class="about-top">
+      <div class="about-intro">
+        <h1>About</h1>
+        <div class="about-body">
+          <p>Lauren Kim is a multidisciplinary creative and textile designer specializing in ready-to-wear, activewear, and accessories. With expertise in printed, knit, and woven textiles, she balances hand-drawn and digital techniques to create distinctive, nuanced designs. With a keen eye and unique design sensibility, Lauren has partnered with global brands and emerging labels alike, delivering versatile, high-quality designs that highlight the beauty of print, color, and graphics. She is based in downtown, Manhattan.</p>
+
+          <div class="about-clients">
+            <h2>Selected Companies</h2>
+            <p>Spanx · lululemon · CUUP · DKNY · Coach</p>
+          </div>
+
+          <div class="about-press">
+            <h2>Selected Press</h2>
+            <p>Vogue · Hypebeast</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-photo-right">
+        <img src="/images/about-photo.png" alt="Lauren Kim" class="reveal" />
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-about { padding: 0; }
+  .about-top { display: flex; justify-content: space-between; align-items: flex-start; padding: 6.8rem var(--pad) 2rem; gap: 2rem; }
+  .about-intro { max-width: 38rem; margin-left: 50%; flex: 1; }
+  h1 { margin: 0 0 1rem; font-size: 0.95rem; font-weight: 700; }
+  .about-body { font-size: 0.95rem; line-height: 1.2; color: var(--ink-85); }
+  .about-body p { margin: 0 0 1.8rem; }
+
+  .about-clients { margin-top: 2rem; }
+  .about-clients h2 { margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 700; }
+  .about-clients p { margin: 0 0 1.8rem; font-size: 0.95rem; line-height: 1.2; color: var(--ink-85); }
+
+  .about-press h2 { margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 700; }
+  .about-press p { margin: 0; font-size: 0.95rem; line-height: 1.2; color: var(--ink-85); }
+
+  /* Photo: 35% smaller (182px), flush right to page edge */
+  .about-photo-right { flex-shrink: 0; margin-top: 16rem; margin-right: calc(-1 * var(--pad)); padding-right: var(--pad); }
+  .about-photo-right img { width: 182px; height: auto; display: block; }
+
+  @media (max-width: 800px) {
+    .about-top { flex-direction: column; padding-top: 9rem; }
+    .about-intro { margin-left: 0; }
+    .about-photo-right { margin-top: 1.5rem; margin-right: 0; padding-right: 0; }
+    .about-photo-right img { width: 150px; }
+  }
+</style>
