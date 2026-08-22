@@ -23,7 +23,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   line-height: 1.65;
   letter-spacing: var(--letter);
   -webkit-font-smoothing: antialiased;
@@ -66,9 +66,9 @@ a { color: inherit; text-decoration: none; }
 .site-header a { color: #ffffff; }
 .site-header a:hover { text-decoration: underline; }
 /* Header links: compact, refined, bold. Open spacing between sections. */
-.brand { margin: 0 0 3.5rem; font-size: 1.2rem; font-weight: 700; line-height: 1.25; }
-.header-links { display: flex; flex-direction: column; font-size: 1.2rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
-.project-nav { margin-top: 3.5rem; display: flex; flex-direction: column; font-size: 1.2rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
+.brand { margin: 0 0 3.5rem; font-size: 0.95rem; font-weight: 700; line-height: 1.25; }
+.header-links { display: flex; flex-direction: column; font-size: 0.95rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
+.project-nav { margin-top: 3.5rem; display: flex; flex-direction: column; font-size: 0.95rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
 .project-nav a.active { text-decoration: underline; }
 
 /* ---- Homepage: staggered two-column grid with varied image widths ---- */
@@ -83,7 +83,7 @@ a { color: inherit; text-decoration: none; }
 .proj { width: var(--w, 100%); }
 .proj-img { width: 100%; }          /* no hover fade — stays the same */
 .proj-meta { margin-top: 0.7rem; }
-.proj-caption { margin: 0; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.018em; line-height: 1.0; }
+.proj-caption { margin: 0; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.018em; line-height: 1.0; }
 .proj-caption a:hover { text-decoration: underline; }
 .proj-number {
   display: inline-block;
@@ -105,9 +105,9 @@ a { color: inherit; text-decoration: none; }
 .project { padding: 0; }
 .project-top { display: flex; justify-content: flex-end; padding: var(--pad); margin-bottom: 0.5rem; }
 .project-intro { max-width: 34rem; }
-.project-title { margin: 0 0 0.3rem; font-size: 1.2rem; font-weight: 700; color: var(--ink-85); line-height: 1.1; }
-.project-client { margin: 0 0 1rem; font-size: 1.2rem; color: var(--ink-60); font-style: italic; }
-.project-desc { margin: 0; font-size: 1.2rem; line-height: 1.2; color: var(--ink-75); }
+.project-title { margin: 0 0 0.3rem; font-size: 0.95rem; font-weight: 700; color: var(--ink-85); line-height: 1.1; }
+.project-client { margin: 0 0 1rem; font-size: 0.95rem; color: var(--ink-60); font-style: italic; }
+.project-desc { margin: 0; font-size: 0.95rem; line-height: 1.2; color: var(--ink-75); }
 .seq { display: flex; flex-direction: column; gap: var(--gutter); }
 .seq img { width: 100%; }
 .seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
@@ -119,7 +119,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Stub pages ---- */
 .stub { min-height: 70vh; padding: 9rem var(--pad) var(--pad); display: flex; align-items: center; }
-.stub p { font-size: 1.2rem; color: var(--ink-60); }
+.stub p { font-size: 0.95rem; color: var(--ink-60); }
 
 /* ---- A11y ---- */
 a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
@@ -131,4 +131,4 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .skip-link:focus { left: var(--pad); }
 
 /* ---- Footer ---- */
-.site-footer { padding: 4rem var(--pad) var(--pad); font-size: 1.2rem; font-weight: 700; color: var(--ink); }
+.site-footer { padding: 4rem var(--pad) var(--pad); font-size: 0.95rem; font-weight: 700; color: var(--ink); }
