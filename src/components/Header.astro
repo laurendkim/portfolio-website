@@ -14,8 +14,10 @@ const { current = null } = Astro.props;
   {current && (
     <nav class="project-nav" aria-label="Projects">
       {projects.map((p, i) => (
-        <a href={`/projects/${p.slug}`} class:list={{ active: p.slug === current }}>
-          P{i + 1}&nbsp;&nbsp;{p.caption}{p.subtitle && <>&nbsp;&nbsp;{p.subtitle.split('\n')[0]}</>}
+        <a href={`/projects/${p.slug}`} class:list={{ active: p.slug === current }} class="project-link">
+          <span class="proj-num">P{i + 1}</span>
+          <span class="proj-name">{p.caption}</span>
+          {p.subtitle && <span class="proj-work">{p.subtitle.split('\n')[0]}</span>}
         </a>
       ))}
     </nav>
