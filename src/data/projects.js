@@ -33,7 +33,7 @@ export const projects = [
   { slug: 'suminagashi',        num: '02', short: 'Suminagashi',        caption: 'Lululemon / Suminagashi',   client: 'Lululemon Lab', title: 'Lululemon / Suminagashi', dir: '/images/suminagashi',        count: 13, width: 44, subtitle: sumiSub, desc: sumiDesc },
   { slug: 'seawheeze',          num: '03', short: 'Seawheeze',          caption: 'Lululemon / Seawheeze',     client: 'Lululemon', title: 'Lululemon / Seawheeze', dir: '/images/seawheeze',          count: 8,  width: 38, subtitle: seaSub, desc: seaDesc },
   { slug: 'year-of-the-rabbit', num: '04', short: 'Year of the Rabbit', caption: 'Lululemon / Year of the Rabbit', client: 'Lululemon', title: 'Lululemon / Year of the Rabbit', dir: '/images/year-of-the-rabbit', count: 9,  width: 47, subtitle: lnySub, desc: lnyDesc },
-  { slug: 'floral-cyanotype',   num: '05', short: 'Floral Cyanotype',   caption: 'CUUP / Floral Cyanotype',   client: 'CUUP',      title: 'CUUP / Floral Cyanotype',      dir: '/images/floral-cyanotype',   count: 12, width: 43 },
+  { slug: 'floral-cyanotype',   num: '05', short: 'Floral Cyanotype',   caption: 'CUUP / Floral Cyanotype',   client: 'CUUP',      title: 'CUUP / Floral Cyanotype',      dir: '/images/floral-cyanotype',   count: 12, width: 43, subtitle: "Print Development\nCyanotype Textile Collection" },
   { slug: 'zebra-print',        num: '06', short: 'Zebra Print',        caption: 'CUUP / Zebra Print',        client: 'CUUP',      title: 'CUUP / Zebra Print',           dir: '/images/zebra-print',        count: 6,  width: 42, subtitle: cuupSub, desc: cuupDesc },
 ];
 
