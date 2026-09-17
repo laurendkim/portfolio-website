@@ -66,9 +66,9 @@ a { color: inherit; text-decoration: none; }
 .site-header a { color: #ffffff; }
 .site-header a:hover { text-decoration: underline; }
 /* Header links: compact, refined, bold. Open spacing between sections. */
-.brand { margin: 0 0 3.5rem; font-size: 0.95rem; font-weight: 700; line-height: 1.25; }
+.brand { margin: 0 0 3.5rem; font-size: 0.95rem; font-weight: 700; line-height: 1.25; letter-spacing: 50px; }
 .header-links { display: flex; flex-direction: column; font-size: 0.95rem; font-weight: 700; line-height: 1.3; gap: 0.2rem; }
-.project-nav { margin-top: 3.5rem; display: flex; flex-direction: column; font-size: 0.95rem; font-weight: 700; line-height: 1.3; gap: 1rem; }
+.project-nav { margin-top: 3.5rem; display: flex; flex-direction: column; font-size: 0.95rem; font-weight: 700; line-height: 1.65; gap: 1rem; }
 .project-link { display: grid; grid-template-columns: 50px 1fr 1fr; gap: 1rem; align-items: center; }
 .proj-num { flex-shrink: 0; }
 .proj-name { }
