@@ -1,7 +1,7 @@
 // Projects in homepage order. `count` = number of NN.jpg gallery images besides cover.jpg.
 // `width` = homepage cover width in vw (varied/dynamic). `subtitle` (optional) = the small meta
 // lines under a project title. Images live in /public/images/<slug>/.
-const rgSub = `Color / Print / Jacquard Development\nlululemon | Robert Geller Collaboration, Spring '20`;
+const rgSub = `Color | Print | Jacquard Development\nlululemon | Robert Geller Collaboration, Spring '20`;
 const rgDesc = `Color palette and brushstroke-inspired artwork developed for "A Moment to Reflect," lululemon's collaboration with New York menswear designer Robert Geller. Geller's signature color sensibility was translated into the context of lululemon activewear, building a palette that balanced refined utilitarian neutrals with expressive accent hues. The artwork was then interpreted across two textile constructions– a Distressed Camo jacquard and a Washed Camo print, and applied across a 26-piece collection spanning technical tees, leggings, reversible outerwear, and a 3-in-1 waterproof parka. Together, the color and graphic language helped unify a wardrobe designed to transition seamlessly between movement and city life. The collaboration marked the first Robert Geller collection to include womenswear and drew wide editorial coverage.`;
 
 const rgProcess = {
@@ -22,7 +22,7 @@ const sumiDesc = `Created using suminagashi, the centuries-old Japanese techniqu
 const seaSub = "Print Development\nlululemon | Men's + Women's Run, Summer '20";
 const seaDesc = `Created for lululemon's annual SeaWheeze collection, the Race Pace Print draws from the rhythm, movement, and collective energy of one of Vancouver's biggest running events. Developed in two colorways and applied across men's and women's run kits, the print was part of a limited-edition capsule released globally during the festival's virtual 2020 edition.`;
 
-const lnySub = "Seamless/ Jacquard / Print Development\nlululemon | Lunar New Year Collection, Winter '22";
+const lnySub = "Seamless | Jacquard | Print Development\nlululemon | Lunar New Year Collection, Winter '22";
 const lnyDesc = `Abstract camouflage inspired by the Year of the Rabbit, balancing symbolism with performance. The artwork was engineered across three distinct constructions: a tonal seamless knit, an oversized jacquard for sweaters and outerwear, and an all-over print for technical activewear. Launched globally across North America and APAC, the collection reimagined a traditional Lunar New Year motif through a contemporary athletic lens.`;
 
 const cuupSub = "Print Development\nCUUP | Swimwear Collection, Summer '23";
