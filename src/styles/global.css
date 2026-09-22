@@ -69,7 +69,7 @@ a { color: inherit; text-decoration: none; }
 /* Project pages override header styling */
 .project-page .site-header {
   position: fixed !important;
-  width: 35vw;
+  width: 40vw;
   height: 100vh;
   left: 0;
   top: 0;
@@ -162,4 +162,4 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .project-page .proj-num { white-space: nowrap; }
 .project-page .proj-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .proj-work { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.project-page .project { margin-left: 35vw; width: 65vw; padding-left: 0; }
+.project-page .project { margin-left: 40vw; width: 60vw; padding-left: 0; }
