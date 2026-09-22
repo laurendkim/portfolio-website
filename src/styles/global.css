@@ -148,3 +148,4 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .project-page .proj-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .proj-work { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .project { margin-left: 30vw; width: 70vw; padding-left: 0; }
+.project-page .project-top { padding-top: 11rem; padding-right: var(--pad); padding-bottom: var(--pad); padding-left: var(--pad); }
