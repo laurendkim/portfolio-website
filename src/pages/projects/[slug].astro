@@ -153,8 +153,8 @@ while (i < collectionImages.length) {
 
   /* Two-column layout for project pages */
   .project-page { display: flex; min-height: 100vh; }
-  .project-page .site-header { position: fixed; width: 25vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; border-right: 1px solid var(--ink-60); }
-  .project-page .project { margin-left: 25vw; width: 75vw; }
+  .project-page .site-header { position: fixed !important; width: 30vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; border-right: 1px solid var(--ink-60); mix-blend-mode: normal; z-index: 50; }
+  .project-page .project { margin-left: 30vw; width: 70vw; padding-left: 0; }
 
   @media (max-width: 800px) {
     .project-page { flex-direction: column; }
