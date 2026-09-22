@@ -49,10 +49,7 @@ while (i < collectionImages.length) {
     <div class="project-top">
       <div class="project-intro">
         <p class="project-desc">{project.desc}</p>
-        {project.meta && <>
-          <br />
-          <p class="project-meta">{project.meta}</p>
-        </>}
+        {project.meta && <p class="project-meta">{project.meta}</p>}
       </div>
     </div>
 
@@ -122,6 +119,7 @@ while (i < collectionImages.length) {
   .project-top { padding: var(--pad); display: flex; justify-content: flex-end; padding-top: 14rem; }
   .project-intro { max-width: 38rem; }
   .project-desc { margin: 1.1rem 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); }
+  .project-meta { margin: 1.1rem 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.6); font-style: italic; }
 
   /* Hero images section - FLUSH to edges */
   .hero-section { padding: 1rem 0; }
