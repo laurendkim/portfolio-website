@@ -140,7 +140,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 
 /* ---- Project page two-column layout ---- */
 .project-page { display: flex; min-height: 100vh; }
-.project-page .site-header { position: fixed !important; width: 30vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; border-right: 1px solid var(--ink-60); background: var(--bg); color: var(--ink) !important; mix-blend-mode: normal !important; z-index: 50; }
+.project-page .site-header { position: fixed !important; width: 30vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; background: var(--bg); color: var(--ink) !important; mix-blend-mode: normal !important; z-index: 50; }
 .project-page .site-header a { color: var(--ink) !important; }
 .project-page .site-header a:hover { text-decoration: underline; }
+.project-page .project-link { gap: 0.8rem; }
+.project-page .proj-num { white-space: nowrap; }
+.project-page .proj-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.project-page .proj-work { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .project { margin-left: 30vw; width: 70vw; padding-left: 0; }
