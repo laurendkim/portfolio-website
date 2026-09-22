@@ -118,12 +118,10 @@ while (i < collectionImages.length) {
 <style>
   .project { padding: 0; }
 
-  /* Project description at top - text indented from left edge */
-  .project-top { padding: 14.8rem var(--pad) 2.2rem var(--pad); }
+  /* Project description at top */
+  .project-top { padding: var(--pad); display: flex; justify-content: flex-end; }
   .project-intro { max-width: 38rem; }
-  .project-title { margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
-  .project-sub { margin: 0 0 1rem; font-size: 0.95rem; font-style: italic; line-height: 1.3; white-space: pre-line; color: rgba(0, 0, 0, 0.6); }
-  .project-desc { margin: 0; font-size: 0.95rem; line-height: 1.35; color: rgba(0, 0, 0, 0.85); }
+  .project-desc { margin: 0; font-size: 0.95rem; line-height: 1.35; color: rgba(0, 0, 0, 0.85); margin-bottom: 2.5rem; }
 
   /* Hero images section - FLUSH to edges */
   .hero-section { padding: 2.2rem 0; }
@@ -151,18 +149,9 @@ while (i < collectionImages.length) {
   .seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; }
   .seq .full { width: 100%; }
 
-  /* Two-column layout for project pages */
-  .project-page { display: flex; min-height: 100vh; }
-  .project-page .site-header { position: fixed !important; width: 30vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; border-right: 1px solid var(--ink-60); mix-blend-mode: normal; z-index: 50; }
-  .project-page .project { margin-left: 30vw; width: 70vw; padding-left: 0; }
-
   @media (max-width: 800px) {
-    .project-page { flex-direction: column; }
-    .project-page .site-header { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--ink-60); }
-    .project-page .project { margin-left: 0; width: 100%; }
-    .project-top { justify-content: flex-start; padding-top: 9rem; }
-    .project-intro { margin-left: 0; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2rem var(--pad); }
+    .project-top { padding-top: 9rem; justify-content: flex-start; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2rem var(--pad); margin: 0; width: 100%; }
     .goal-statement { padding: 2.2rem var(--pad); }
     .process-sections { padding: 2rem var(--pad); }
     .process-imgs { grid-template-columns: 1fr; }
