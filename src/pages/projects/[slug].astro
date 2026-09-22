@@ -42,8 +42,9 @@ while (i < collectionImages.length) {
 }
 ---
 <Base title={`${project.caption} — Lauren Kim`} description={project.subtitle ? project.subtitle.split('\n')[0] : project.caption}>
-  <Header current={project.slug} />
-  <article class="project">
+  <div class="project-page">
+    <Header current={project.slug} />
+    <article class="project">
     <!-- Project description (top) -->
     <div class="project-top">
       <div class="project-intro">
@@ -111,6 +112,7 @@ while (i < collectionImages.length) {
       ))}
     </div>
   </article>
+  </div>
 </Base>
 
 <style>
@@ -149,7 +151,15 @@ while (i < collectionImages.length) {
   .seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2rem; }
   .seq .full { width: 100%; }
 
+  /* Two-column layout for project pages */
+  .project-page { display: flex; min-height: 100vh; }
+  .project-page .site-header { position: fixed; width: 25vw; height: 100vh; left: 0; top: 0; padding: var(--pad); overflow-y: auto; border-right: 1px solid var(--ink-60); }
+  .project-page .project { margin-left: 25vw; width: 75vw; }
+
   @media (max-width: 800px) {
+    .project-page { flex-direction: column; }
+    .project-page .site-header { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--ink-60); }
+    .project-page .project { margin-left: 0; width: 100%; }
     .project-top { justify-content: flex-start; padding-top: 9rem; }
     .project-intro { margin-left: 0; }
     .hero-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2rem var(--pad); }
