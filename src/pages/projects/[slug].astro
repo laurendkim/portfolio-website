@@ -47,9 +47,8 @@ while (i < collectionImages.length) {
     <!-- Project description (top) -->
     <div class="project-top">
       <div class="project-intro">
-        <h1 class="project-title">{project.caption}</h1>
-        {project.subtitle && <p class="project-sub">{project.subtitle}</p>}
         <p class="project-desc">{project.desc}</p>
+        {project.meta && <p class="project-meta">{project.meta}</p>}
       </div>
     </div>
 
