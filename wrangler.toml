@@ -1,18 +1,9 @@
 name = "portfolio-website"
-type = "javascript"
 
 [env.production]
 routes = [
   { pattern = "laurenk.im", zone_name = "laurenk.im" }
 ]
-
-[build]
-command = "npm run build"
-cwd = "./"
-watch_paths = ["src/**/*.astro", "src/**/*.ts", "src/**/*.css"]
-
-[build.upload]
-format = "service-worker"
 
 [site]
 bucket = "./dist"
