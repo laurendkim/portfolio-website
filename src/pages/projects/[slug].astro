@@ -64,13 +64,6 @@ while (i < collectionImages.length) {
       </div>
     )}
 
-    <!-- Goal statement (centered) -->
-    {project.process && (
-      <div class="goal-statement">
-        <p>{project.process.goal}</p>
-      </div>
-    )}
-
     <!-- Process sections -->
     {project.process && (
       <div class="process-sections">
@@ -95,6 +88,13 @@ while (i < collectionImages.length) {
           </div>
           <p>{project.process.graphicExploration.text}</p>
         </section>
+      </div>
+    )}
+
+    <!-- Goal statement (centered, after process) -->
+    {project.process && (
+      <div class="goal-statement">
+        <p>{project.process.goal}</p>
       </div>
     )}
 
