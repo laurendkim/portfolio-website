@@ -8,7 +8,7 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const images = project.images || [];
+const content = project.images || [];
 ---
 
 <Base title={`${project.caption} — Lauren Kim`} description={project.subtitle ? project.subtitle.split('\n')[0] : project.caption}>
@@ -22,14 +22,20 @@ const images = project.images || [];
         </div>
       </div>
       <div class="image-grid">
-        {images.map((img) => (
-          <img
-            src={`${project.dir}/${img.name}`}
-            alt={project.caption}
-            loading="lazy"
-            decoding="async"
-            class={!img.portrait ? 'landscape' : 'portrait'}
-          />
+        {content.map((item) => (
+          item.type === 'text' ? (
+            <div class="content-text">
+              {item.text.split('\n\n').map((para) => <p>{para}</p>)}
+            </div>
+          ) : (
+            <img
+              src={`${project.dir}/${item.name}`}
+              alt={project.caption}
+              loading="lazy"
+              decoding="async"
+              class={!item.portrait ? 'landscape' : 'portrait'}
+            />
+          )
         ))}
       </div>
     </article>
@@ -46,6 +52,9 @@ const images = project.images || [];
   .image-grid img { width: 100%; display: block; }
   .image-grid img.portrait { aspect-ratio: 4 / 5; object-fit: cover; }
   .image-grid img.landscape { grid-column: 1 / -1; aspect-ratio: auto; }
+  .content-text { grid-column: 1 / -1; max-width: 38rem; margin: 0.4rem 0; }
+  .content-text p { margin: 0 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); }
+  .content-text p:last-child { margin-bottom: 0; }
   @media (max-width: 800px) {
     .project-top { justify-content: flex-start; padding-top: 9rem; }
     .image-grid { grid-template-columns: 1fr; }
