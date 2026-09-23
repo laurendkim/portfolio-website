@@ -1,9 +1,0 @@
-name = "portfolio-website"
-
-[env.production]
-routes = [
-  { pattern = "laurenk.im", zone_name = "laurenk.im" }
-]
-
-[site]
-bucket = "./dist"
