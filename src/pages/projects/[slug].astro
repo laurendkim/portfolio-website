@@ -120,14 +120,14 @@ while (i < collectionImages.length) {
   .project-meta { margin: 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.6); font-style: italic; }
 
   /* Hero images section - FLUSH to edges */
-  .hero-section { padding: 0.75rem 0 2.2rem 0; }
+  .hero-section { margin-top: 1rem; padding: 0 0 2.2rem 0; }
   .hero-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; padding: 0; margin: 0; width: 100%; }
   .hero-grid img { width: 100%; display: block; }
   .hero-grid img:first-child { grid-column: 1 / -1; }
   .hero-grid img:nth-child(2) { grid-column: 1 / -1; }
 
-  /* Goal statement - left-aligned text, centered on page (same spacing as hero-section) */
-  .goal-statement { padding: 0.75rem var(--pad) 2.2rem var(--pad); display: flex; justify-content: center; }
+  /* Goal statement - left-aligned text, centered on page (same top margin as hero-section) */
+  .goal-statement { margin-top: 1rem; padding: 0 var(--pad) 2.2rem var(--pad); display: flex; justify-content: center; }
   .goal-statement p { margin: 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); max-width: 60rem; text-align: left; white-space: pre-line; }
 
   /* Process sections - TEXT indented, IMAGES flush */
