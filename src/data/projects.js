@@ -104,9 +104,8 @@ const zebraImages = [
   { type: 'image', name: '7_CUUPZebraPrint_CopperBlack.jpg', portrait: true },
   { type: 'image', name: '8_SWIM23_ZEBRA_STR_TOP_BK_D7A2780.jpg', portrait: true },
   { type: 'image', name: '9_SWIM23_ZEBRA_STR_TOP_BK_D7A2638.jpg', portrait: true },
-  { type: 'image', name: '10_SWIM23_ZEBRA_STR_TOP_BK_D7A2660.jpg', portrait: true },
-  { type: 'image', name: '11_SWIM23_ZEBRA_STR_TOP_BK_D7A2810.jpg', portrait: true },
-  { type: 'image', name: '12_SWIM23_ZEBRA_STR_TOP_BK_D7A2721.jpg', portrait: false },
+  { type: 'image', name: '10_SWIM23_ZEBRA_STR_TOP_BK_D7A2810.jpg', portrait: true },
+  { type: 'image', name: '11_SWIM23_ZEBRA_STR_TOP_BK_D7A2721.jpg', portrait: false },
 ];
 
 export const projects = [
