@@ -124,21 +124,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- Project page (full-bleed images, inset text) ---- */
 .project { padding: 0; }
-.project-top { padding: var(--pad); margin-bottom: 0.5rem; }
-.project-page .project-top { display: flex; justify-content: flex-end; padding-top: 14rem; padding-right: var(--pad); padding-bottom: var(--pad); padding-left: var(--pad); }
-.project-intro { max-width: 34rem; }
-.project-title { margin: 0 0 0.3rem; font-size: 0.95rem; font-weight: 700; color: var(--ink-85); line-height: 1.1; }
-.project-client { margin: 0 0 1rem; font-size: 0.95rem; color: var(--ink-60); font-style: italic; }
-.project-desc { margin: 0 0 0.5rem; font-size: 0.95rem; line-height: 1.2; color: var(--ink-75); }
-.project-meta { margin: 1.1rem 0 1.1rem; font-size: 0.9rem; color: var(--ink-60); font-style: italic; }
-.seq { display: flex; flex-direction: column; gap: var(--gutter); }
-.seq img { width: 100%; }
-.seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
-
-@media (max-width: 800px) {
-  .project-top { justify-content: flex-start; padding-top: 9rem; }
-  .seq .two { grid-template-columns: 1fr; }
-}
 
 /* ---- Stub pages ---- */
 .stub { min-height: 70vh; padding: 9rem var(--pad) var(--pad); display: flex; align-items: center; }
