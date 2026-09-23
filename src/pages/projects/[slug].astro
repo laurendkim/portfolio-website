@@ -74,16 +74,18 @@ while (i < collectionImages.length) {
     <!-- Process sections -->
     {project.process && (
       <div class="process-sections">
+        {project.process.color.images ? (
+          project.process.color.images.map((src) => (
+            <section class="process-item">
+              <img src={src} alt="Color Exploration" loading="lazy" decoding="async" />
+            </section>
+          ))
+        ) : (
+          <section class="process-item">
+            <img src={project.process.color.image} alt="Color Exploration" loading="lazy" decoding="async" />
+          </section>
+        )}
         <section class="process-item">
-          <div class="process-imgs">
-            {project.process.color.images ? (
-              project.process.color.images.map((src) => (
-                <img src={src} alt="Color Exploration" loading="lazy" decoding="async" />
-              ))
-            ) : (
-              <img src={project.process.color.image} alt="Color Exploration" loading="lazy" decoding="async" />
-            )}
-          </div>
           <p>{project.process.color.text}</p>
         </section>
 
