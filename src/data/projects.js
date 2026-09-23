@@ -52,6 +52,9 @@ const rgImages = [
 ];
 
 const sumiImages = [
+  { type: 'image', name: '1_LW1DA8S_0002_5 2 copy.webp', portrait: false },
+  { type: 'image', name: '2_LW3FI6S_0002_4.webp', portrait: true },
+  { type: 'image', name: '3_LW3FI6S_0002_5.webp', portrait: true },
   { type: 'image', name: '4_LW5BTJS_026512_5.jpg', portrait: true },
   { type: 'image', name: '5_LW3BU7S_026512_Y.jpg', portrait: true },
   { type: 'image', name: '6_LW5BTJS_026512_1.jpg', portrait: true },
@@ -84,10 +87,12 @@ const lnyImages = [
   { type: 'image', name: '3_unnamed.jpg', portrait: true },
   { type: 'image', name: '4_324700807_1294172601363820_7354429857507063805_n.jpg', portrait: true },
   { type: 'image', name: '5_324845326_912225286601450_8560149858109560816_n.jpg', portrait: true },
+  { type: 'image', name: '6_LululemonLunarNewYear_vlvoli.jpg', portrait: false },
   { type: 'image', name: '7_324416993_721019136008543_8567709523483278822_n.jpg', portrait: true },
   { type: 'image', name: '8_324548922_861147328553210_6646772576276743590_n.jpg', portrait: true },
-  { type: 'image', name: '9_image.jpg', portrait: true },
-  { type: 'image', name: '10_324457542_854841622409327_5760961443360146678_n.jpg', portrait: true },
+  { type: 'image', name: '10_Asia_23Jan_WK3_website_LNY_bag_Promotile.webp', portrait: false },
+  { type: 'image', name: '11_image.jpg', portrait: true },
+  { type: 'image', name: '12_324457542_854841622409327_5760961443360146678_n.jpg', portrait: true },
 ];
 
 const zebraImages = [
