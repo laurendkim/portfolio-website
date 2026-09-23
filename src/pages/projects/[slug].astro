@@ -16,7 +16,7 @@ const content = project.images || [];
     <Header current={project.slug} />
     <article class="project">
       <div class="project-top">
-        <div class="project-intro">
+        <div class="project-intro reveal">
           <p class="project-desc">{project.desc}</p>
           {project.meta && <p class="project-meta">{project.meta}</p>}
         </div>
@@ -24,7 +24,7 @@ const content = project.images || [];
       <div class="image-grid">
         {content.map((item) => (
           item.type === 'text' ? (
-            <div class="content-text">
+            <div class="content-text reveal">
               {item.text.split('\n\n').map((para) => <p>{para}</p>)}
             </div>
           ) : (
@@ -33,7 +33,7 @@ const content = project.images || [];
               alt={project.caption}
               loading="lazy"
               decoding="async"
-              class={!item.portrait ? 'landscape' : 'portrait'}
+              class={`reveal ${!item.portrait ? 'landscape' : 'portrait'}`}
             />
           )
         ))}
