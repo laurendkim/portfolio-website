@@ -26,12 +26,76 @@ const cuupType = `Print Development`;
 const cuupMeta = `\nCUUP | Swimwear Collection, Summer '23`;
 const cuupDesc = `A reinterpretation of the classic zebra print through an organic, fluid, hand-drawn lens. The earthy terracotta against contrasting black stripes balance warmth, sensuality, and confident strength. Created for CUUP's debut swim collection, the print helped establish the visual language of CUUP's expansion into swim.`;
 
-// Image lists for each project (numbered files, sorted)
-const rgImages = ['1_RG_Hero.jpg', '2_RG_Hero.jpg', '3_RG_Hero.jpg', '4_RG_Hero.jpg', '6_RG_Color1.png', '7_RG_Color2.png', '8_RG_Color3.png', '10_RG_GraphicExploration_1.png', '11_RG_GraphicExploration_3.jpg', '12_RG_GraphicExploration_4.jpg', '13_RG_GraphicExploration_2.png', '15_Final_1.jpg', '16_Final_2.jpg', '17_Final_3.jpg'];
-const sumiImages = ['4_LW5BTJS_026512_5.jpg', '5_LW3BU7S_026512_Y.jpg', '6_LW5BTJS_026512_1.jpg', '7_LW2BCES_026512_1.jpg', '8_LW3BU7S_026512_1.jpg', '9_LW3BU7S_026512_4.jpg', '10_Suminagashi_5.jpg', '11_Suminagashi_1.jpg', '12_Suminagashi_2.jpg', '13_Suminagashi_6.jpg', '14_Suminagashi_4.jpg', '15_Suminagashi_3.jpg'];
-const seaImages = ['1_SW_1 copy.jpg', '2_bec2rqpxyyfjqy449xm2_crop 2.jpg', '3_RacePace_SunlightYellowMulti.jpg', '4_LM4AA1S_044708_6 copy.jpg', '5_LM4AA1S_044708_4.jpg', '6_SW_4 2.jpg', '7_SW_7 copy.jpg', '8_RacePace_FlareMulti copy.jpg', '9_LW2BZ7S_044818_5 2.jpg'];
-const lnyImages = ['1_rs_1024x759-230111102253-lunar-1024-.jpg', '2_324545625_5968353216548570_2469358245715729946_n.jpg', '3_unnamed.jpg', '4_324700807_1294172601363820_7354429857507063805_n.jpg', '5_324845326_912225286601450_8560149858109560816_n.jpg', '7_324416993_721019136008543_8567709523483278822_n.jpg', '8_324548922_861147328553210_6646772576276743590_n.jpg', '9_image.jpg', '10_324457542_854841622409327_5760961443360146678_n.jpg'];
-const zebraImages = ['1_SWIM23_ZEBRA_SCOOP_HW_D7A9915.jpg', '2_SWIM23_ZEBRA_SCOOP_HW_D7A9959.jpg', '4_SWIM23_ZEBRA_SCOOP_HW_D7A9990.jpg', '5_SWIM23_ZEBRA_STR_0032 2.jpg', '6_SWIM23_ZEBRA_STR_TOP_BK_D7A2732.jpg', '7_CUUPZebraPrint_CopperBlack.jpg', '8_SWIM23_ZEBRA_STR_TOP_BK_D7A2780.jpg', '9_SWIM23_ZEBRA_STR_TOP_BK_D7A2638.jpg', '10_SWIM23_ZEBRA_STR_TOP_BK_D7A2660.jpg', '11_SWIM23_ZEBRA_STR_TOP_BK_D7A2698.jpg', '12_SWIM23_ZEBRA_STR_TOP_BK_D7A2810.jpg'];
+// Image lists with orientation info
+const rgImages = [
+  { name: '1_RG_Hero.jpg', portrait: false },
+  { name: '2_RG_Hero.jpg', portrait: false },
+  { name: '3_RG_Hero.jpg', portrait: true },
+  { name: '4_RG_Hero.jpg', portrait: true },
+  { name: '6_RG_Color1.png', portrait: false },
+  { name: '7_RG_Color2.png', portrait: false },
+  { name: '8_RG_Color3.png', portrait: false },
+  { name: '10_RG_GraphicExploration_1.png', portrait: true },
+  { name: '11_RG_GraphicExploration_3.jpg', portrait: true },
+  { name: '12_RG_GraphicExploration_4.jpg', portrait: true },
+  { name: '13_RG_GraphicExploration_2.png', portrait: true },
+  { name: '15_Final_1.jpg', portrait: false },
+  { name: '16_Final_2.jpg', portrait: false },
+  { name: '17_Final_3.jpg', portrait: false },
+];
+
+const sumiImages = [
+  { name: '4_LW5BTJS_026512_5.jpg', portrait: true },
+  { name: '5_LW3BU7S_026512_Y.jpg', portrait: true },
+  { name: '6_LW5BTJS_026512_1.jpg', portrait: true },
+  { name: '7_LW2BCES_026512_1.jpg', portrait: true },
+  { name: '8_LW3BU7S_026512_1.jpg', portrait: true },
+  { name: '9_LW3BU7S_026512_4.jpg', portrait: true },
+  { name: '10_Suminagashi_5.jpg', portrait: false },
+  { name: '11_Suminagashi_1.jpg', portrait: false },
+  { name: '12_Suminagashi_2.jpg', portrait: false },
+  { name: '13_Suminagashi_6.jpg', portrait: false },
+  { name: '14_Suminagashi_4.jpg', portrait: false },
+  { name: '15_Suminagashi_3.jpg', portrait: false },
+];
+
+const seaImages = [
+  { name: '1_SW_1 copy.jpg', portrait: false },
+  { name: '2_bec2rqpxyyfjqy449xm2_crop 2.jpg', portrait: true },
+  { name: '3_RacePace_SunlightYellowMulti.jpg', portrait: true },
+  { name: '4_LM4AA1S_044708_6 copy.jpg', portrait: true },
+  { name: '5_LM4AA1S_044708_4.jpg', portrait: true },
+  { name: '6_SW_4 2.jpg', portrait: true },
+  { name: '7_SW_7 copy.jpg', portrait: true },
+  { name: '8_RacePace_FlareMulti copy.jpg', portrait: true },
+  { name: '9_LW2BZ7S_044818_5 2.jpg', portrait: true },
+];
+
+const lnyImages = [
+  { name: '1_rs_1024x759-230111102253-lunar-1024-.jpg', portrait: false },
+  { name: '2_324545625_5968353216548570_2469358245715729946_n.jpg', portrait: true },
+  { name: '3_unnamed.jpg', portrait: true },
+  { name: '4_324700807_1294172601363820_7354429857507063805_n.jpg', portrait: true },
+  { name: '5_324845326_912225286601450_8560149858109560816_n.jpg', portrait: true },
+  { name: '7_324416993_721019136008543_8567709523483278822_n.jpg', portrait: true },
+  { name: '8_324548922_861147328553210_6646772576276743590_n.jpg', portrait: true },
+  { name: '9_image.jpg', portrait: true },
+  { name: '10_324457542_854841622409327_5760961443360146678_n.jpg', portrait: true },
+];
+
+const zebraImages = [
+  { name: '1_SWIM23_ZEBRA_SCOOP_HW_D7A9915.jpg', portrait: false },
+  { name: '2_SWIM23_ZEBRA_SCOOP_HW_D7A9959.jpg', portrait: true },
+  { name: '4_SWIM23_ZEBRA_SCOOP_HW_D7A9990.jpg', portrait: true },
+  { name: '5_SWIM23_ZEBRA_STR_0032 2.jpg', portrait: false },
+  { name: '6_SWIM23_ZEBRA_STR_TOP_BK_D7A2732.jpg', portrait: false },
+  { name: '7_CUUPZebraPrint_CopperBlack.jpg', portrait: true },
+  { name: '8_SWIM23_ZEBRA_STR_TOP_BK_D7A2780.jpg', portrait: true },
+  { name: '9_SWIM23_ZEBRA_STR_TOP_BK_D7A2638.jpg', portrait: true },
+  { name: '10_SWIM23_ZEBRA_STR_TOP_BK_D7A2660.jpg', portrait: true },
+  { name: '11_SWIM23_ZEBRA_STR_TOP_BK_D7A2698.jpg', portrait: true },
+  { name: '12_SWIM23_ZEBRA_STR_TOP_BK_D7A2810.jpg', portrait: true },
+];
 
 export const projects = [
   { slug: 'robert-geller',      num: '01', short: 'Robert Geller',      caption: 'Robert Geller', client: 'Lululemon', title: 'Robert Geller', dir: '/images/robert-geller',      width: 48, subtitle: rgSub, type: rgType, meta: rgMeta, desc: rgDesc, images: rgImages },

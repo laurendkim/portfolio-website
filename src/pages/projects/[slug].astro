@@ -22,8 +22,15 @@ const images = project.images || [];
         </div>
       </div>
       <div class="image-grid">
-        {images.map((filename) => (
-          <img src={`${project.dir}/${filename}`} alt={project.caption} loading="lazy" decoding="async" />
+        {images.map((img) => (
+          <img
+            src={`${project.dir}/${img.name}`}
+            alt={project.caption}
+            loading="lazy"
+            decoding="async"
+            data-landscape={!img.portrait}
+            class={!img.portrait ? 'landscape' : 'portrait'}
+          />
         ))}
       </div>
     </article>
@@ -36,9 +43,12 @@ const images = project.images || [];
   .project-intro { max-width: 38rem; }
   .project-desc { margin: 1.1rem 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); }
   .project-meta { margin: 0 0 1.5rem 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.6); font-style: italic; }
-  .image-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; padding: 0; margin: 0; width: 100%; }
+  .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; padding: 0; margin: 0; width: 100%; }
   .image-grid img { width: 100%; display: block; }
+  .image-grid img.landscape { grid-column: 1 / -1; }
   @media (max-width: 800px) {
     .project-top { justify-content: flex-start; padding-top: 9rem; }
+    .image-grid { grid-template-columns: 1fr; }
+    .image-grid img.landscape { grid-column: 1; }
   }
 </style>
