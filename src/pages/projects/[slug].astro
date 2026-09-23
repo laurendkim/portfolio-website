@@ -2,8 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import { projects } from '../../data/projects.js';
-import fs from 'fs';
-import path from 'path';
 
 export function getStaticPaths() {
   return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
@@ -11,16 +9,7 @@ export function getStaticPaths() {
 
 const { project } = Astro.props;
 
-// Read all numbered images from project directory
-const imageDir = path.join(process.cwd(), 'public', 'images', project.slug);
-const files = fs.readdirSync(imageDir).filter(f => /^\d+_.*\.(jpg|png)$/i.test(f));
-const imageFiles = files.sort((a, b) => {
-  const numA = parseInt(a.split('_')[0]);
-  const numB = parseInt(b.split('_')[0]);
-  return numA - numB;
-});
-
-// Image dimensions (from build analysis) - format: filename: [width, height]
+// Image dimensions - format: filename: [width, height]
 const imageDimensions = {
   // Robert Geller
   '1_RG_Hero.jpg': [1400, 933], '2_RG_Hero.jpg': [1400, 933], '3_RG_Hero.jpg': [900, 1350], '4_RG_Hero.jpg': [900, 1350],
@@ -41,23 +30,22 @@ const imageDimensions = {
 // Detect orientation (portrait = height > width)
 const isPortrait = (filename) => {
   const dims = imageDimensions[filename];
-  if (!dims) return true; // Default to portrait if not found
+  if (!dims) return true;
   return dims[1] > dims[0];
 };
 
 // Group images: portrait in pairs, landscape alone
 const imageGroups = [];
 let i = 0;
+const imageFiles = project.images || [];
 while (i < imageFiles.length) {
   const current = imageFiles[i];
   const isCurrentPortrait = isPortrait(current);
 
   if (isCurrentPortrait && i + 1 < imageFiles.length && isPortrait(imageFiles[i + 1])) {
-    // Two portrait images together
     imageGroups.push({ type: 'two-portrait', images: [current, imageFiles[i + 1]] });
     i += 2;
   } else {
-    // Single landscape or unpaired image
     imageGroups.push({ type: isCurrentPortrait ? 'single-portrait' : 'single-landscape', images: [current] });
     i += 1;
   }
