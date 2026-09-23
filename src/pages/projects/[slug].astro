@@ -1,112 +1,97 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
-import { projects, galleryFor } from '../../data/projects.js';
+import { projects } from '../../data/projects.js';
+import fs from 'fs';
+import path from 'path';
 
 export function getStaticPaths() {
   return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
 }
 
 const { project } = Astro.props;
-const images = galleryFor(project);
-// Skip cover.jpg (index 0) and use only numbered images for collection
-const collectionImages = images.slice(1);
 
-// Portrait/landscape detection based on image aspect ratio hints
-const isPortrait = (src: string) => {
-  // Images with 03, 04 in path are portrait; 05+ may be landscape
-  const num = src.match(/(\d+)\.jpg/)?.[1];
-  if (!num) return false;
-  const imgNum = parseInt(num);
-  return imgNum === 3 || imgNum === 4;
+// Read all numbered images from project directory
+const imageDir = path.join(process.cwd(), 'public', 'images', project.slug);
+const files = fs.readdirSync(imageDir).filter(f => /^\d+_.*\.(jpg|png)$/i.test(f));
+const imageFiles = files.sort((a, b) => {
+  const numA = parseInt(a.split('_')[0]);
+  const numB = parseInt(b.split('_')[0]);
+  return numA - numB;
+});
+
+// Image dimensions (from build analysis) - format: filename: [width, height]
+const imageDimensions = {
+  // Robert Geller
+  '1_RG_Hero.jpg': [1400, 933], '2_RG_Hero.jpg': [1400, 933], '3_RG_Hero.jpg': [900, 1350], '4_RG_Hero.jpg': [900, 1350],
+  '6_RG_Color1.png': [5100, 2624], '7_RG_Color2.png': [3535, 1467], '8_RG_Color3.png': [3535, 1372],
+  '10_RG_GraphicExploration_1.png': [781, 1000], '11_RG_GraphicExploration_3.jpg': [621, 933], '12_RG_GraphicExploration_4.jpg': [415, 600], '13_RG_GraphicExploration_2.png': [807, 1000],
+  '15_Final_1.jpg': [1400, 933], '16_Final_2.jpg': [1400, 933], '17_Final_3.jpg': [882, 600],
+  // Suminagashi
+  '4_LW5BTJS_026512_5.jpg': [1280, 1536], '5_LW3BU7S_026512_Y.jpg': [1280, 1536], '6_LW5BTJS_026512_1.jpg': [1280, 1536], '7_LW2BCES_026512_1.jpg': [1280, 1536], '8_LW3BU7S_026512_1.jpg': [1280, 1536], '9_LW3BU7S_026512_4.jpg': [1280, 1536],
+  '10_Suminagashi_5.jpg': [2035, 1145], '11_Suminagashi_1.jpg': [2333, 1313], '12_Suminagashi_2.jpg': [2035, 1145], '13_Suminagashi_6.jpg': [1559, 1039], '14_Suminagashi_4.jpg': [1823, 1215], '15_Suminagashi_3.jpg': [2035, 1145],
+  // Seawheeze
+  '1_SW_1 copy.jpg': [1077, 718], '2_bec2rqpxyyfjqy449xm2_crop 2.jpg': [741, 1112], '3_RacePace_SunlightYellowMulti.jpg': [4748, 7122], '4_LM4AA1S_044708_6 copy.jpg': [1334, 1600], '5_LM4AA1S_044708_4.jpg': [1334, 1600], '6_SW_4 2.jpg': [2212, 2600], '7_SW_7 copy.jpg': [750, 897], '8_RacePace_FlareMulti copy.jpg': [4748, 7122], '9_LW2BZ7S_044818_5 2.jpg': [1334, 1600],
+  // Year of the Rabbit
+  '1_rs_1024x759-230111102253-lunar-1024-.jpg': [1024, 759], '2_324545625_5968353216548570_2469358245715729946_n.jpg': [1080, 1303], '3_unnamed.jpg': [1240, 1420], '4_324700807_1294172601363820_7354429857507063805_n.jpg': [989, 1167], '5_324845326_912225286601450_8560149858109560816_n.jpg': [1080, 1269], '7_324416993_721019136008543_8567709523483278822_n.jpg': [1080, 1350], '8_324548922_861147328553210_6646772576276743590_n.jpg': [1080, 1350], '9_image.jpg': [732, 916], '10_324457542_854841622409327_5760961443360146678_n.jpg': [1080, 1350],
+  // Zebra Print
+  '1_SWIM23_ZEBRA_SCOOP_HW_D7A9915.jpg': [6720, 4480], '2_SWIM23_ZEBRA_SCOOP_HW_D7A9959.jpg': [4480, 6720], '4_SWIM23_ZEBRA_SCOOP_HW_D7A9990.jpg': [4480, 6720], '5_SWIM23_ZEBRA_STR_0032 2.jpg': [4032, 3024], '6_SWIM23_ZEBRA_STR_TOP_BK_D7A2732.jpg': [6720, 4480], '7_CUUPZebraPrint_CopperBlack.jpg': [2027, 3040], '8_SWIM23_ZEBRA_STR_TOP_BK_D7A2780.jpg': [4480, 6720], '9_SWIM23_ZEBRA_STR_TOP_BK_D7A2638.jpg': [4480, 6720], '10_SWIM23_ZEBRA_STR_TOP_BK_D7A2660.jpg': [4480, 6720], '11_SWIM23_ZEBRA_STR_TOP_BK_D7A2698.jpg': [4480, 6720], '12_SWIM23_ZEBRA_STR_TOP_BK_D7A2810.jpg': [4480, 6720],
 };
 
-// Layout: organize collection images based on orientation
-const rows = [];
-let i = 0;
-while (i < collectionImages.length) {
-  const current = collectionImages[i];
-  const next = collectionImages[i + 1];
-  const currentIsPortrait = isPortrait(current);
-  const nextIsPortrait = next ? isPortrait(next) : false;
+// Detect orientation (portrait = height > width)
+const isPortrait = (filename) => {
+  const dims = imageDimensions[filename];
+  if (!dims) return true; // Default to portrait if not found
+  return dims[1] > dims[0];
+};
 
-  // If current is portrait and next is also portrait, group them
-  if (currentIsPortrait && nextIsPortrait && next) {
-    rows.push({ type: 'two', imgs: [current, next] });
+// Group images: portrait in pairs, landscape alone
+const imageGroups = [];
+let i = 0;
+while (i < imageFiles.length) {
+  const current = imageFiles[i];
+  const isCurrentPortrait = isPortrait(current);
+
+  if (isCurrentPortrait && i + 1 < imageFiles.length && isPortrait(imageFiles[i + 1])) {
+    // Two portrait images together
+    imageGroups.push({ type: 'two-portrait', images: [current, imageFiles[i + 1]] });
     i += 2;
   } else {
-    // Single image (landscape or last in sequence)
-    rows.push({ type: 'full', imgs: [current] });
+    // Single landscape or unpaired image
+    imageGroups.push({ type: isCurrentPortrait ? 'single-portrait' : 'single-landscape', images: [current] });
     i += 1;
   }
 }
 ---
+
 <Base title={`${project.caption} — Lauren Kim`} description={project.subtitle ? project.subtitle.split('\n')[0] : project.caption}>
   <div class="project-page">
     <Header current={project.slug} />
     <article class="project">
-    <!-- Project description (top) -->
-    <div class="project-top">
-      <div class="project-intro">
-        <p class="project-desc">{project.desc}</p>
-        {project.meta && <p class="project-meta">{project.meta}</p>}
-      </div>
-    </div>
-
-    <!-- Hero images section -->
-    {project.heroImages && (
-      <div class="hero-section">
-        <div class="hero-grid">
-          {project.heroImages.map((src, idx) => (
-            <img src={src} alt={`${project.caption} ${idx + 1}`} loading={idx === 0 ? "eager" : "lazy"} decoding="async" />
-          ))}
+      <!-- Project description (top) -->
+      <div class="project-top">
+        <div class="project-intro">
+          <p class="project-desc">{project.desc}</p>
+          {project.meta && <p class="project-meta">{project.meta}</p>}
         </div>
       </div>
-    )}
 
-    <!-- Process sections -->
-    {project.process && (
-      <div class="process-sections">
-        <section class="process-item">
-          <div class="color-imgs">
-            {project.process.color.images ? (
-              project.process.color.images.map((src) => (
-                <img src={src} alt="Color Exploration" loading="lazy" decoding="async" />
-              ))
-            ) : (
-              <img src={project.process.color.image} alt="Color Exploration" loading="lazy" decoding="async" />
-            )}
-          </div>
-          <p>{project.process.color.text}</p>
-        </section>
-
-        <section class="process-item">
-          <div class="process-imgs">
-            {project.process.graphicExploration.images.map((src) => (
-              <img src={src} alt="Graphic Exploration" loading="lazy" decoding="async" />
+      <!-- Images organized by orientation -->
+      <div class="image-grid">
+        {imageGroups.map((group) => (
+          <div class={`group ${group.type}`}>
+            {group.images.map((filename) => (
+              <img
+                src={`${project.dir}/${filename}`}
+                alt={project.caption}
+                loading="lazy"
+                decoding="async"
+              />
             ))}
           </div>
-          <p>{project.process.graphicExploration.text}</p>
-        </section>
+        ))}
       </div>
-    )}
-
-    <!-- Goal statement (centered, after process) -->
-    {project.process && (
-      <div class="goal-statement">
-        <p>{project.process.goal}</p>
-      </div>
-    )}
-
-    <!-- Collection images -->
-    <div class="seq">
-      {rows.map((row) => (
-        <div class={row.type}>
-          {row.imgs.map((src) => (<img src={src} alt={project.caption} loading="lazy" decoding="async" />))}
-        </div>
-      ))}
-    </div>
-  </article>
+    </article>
   </div>
 </Base>
 
@@ -119,43 +104,19 @@ while (i < collectionImages.length) {
   .project-desc { margin: 1.1rem 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); }
   .project-meta { margin: 0 0 1.5rem 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.6); font-style: italic; }
 
-  /* Hero images section - FLUSH to edges */
-  .hero-section { margin-top: 0; padding: 0 0 2.2rem 0; }
-  .hero-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; padding: 0; margin: 0; width: 100%; }
-  .hero-grid img { width: 100%; display: block; }
-  .hero-grid img:first-child { grid-column: 1 / -1; }
-  .hero-grid img:nth-child(2) { grid-column: 1 / -1; }
+  /* Image grid: organize by orientation */
+  .image-grid { display: flex; flex-direction: column; gap: 1.1rem; padding: 0; margin: 0; width: 100%; }
 
-  /* Goal statement - left-aligned text, centered on page (same top margin as hero-section) */
-  .goal-statement { margin-top: 0; padding: 0 var(--pad) 2.2rem var(--pad); display: block; text-align: center; }
-  .goal-statement p { margin: 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); max-width: 60rem; text-align: left; display: inline-block; white-space: pre-line; }
+  /* Portrait pair: 2 per row */
+  .group.two-portrait { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; width: 100%; }
+  .group.two-portrait img { width: 100%; display: block; }
 
-  /* Process sections - TEXT indented, IMAGES flush */
-  .process-sections { padding: 0; }
-  .process-item { display: flex; flex-direction: column; margin: 2.2rem 0; width: 100%; }
-  .process-item:first-child { margin-top: 0; }
-  .process-item:last-child { margin-bottom: 0; }
-  .process-item p { margin: 0; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); padding: 0 var(--pad); white-space: pre-line; }
-  .process-item > img { width: 100%; margin-left: 0; margin-right: 0; display: block; }
-  .process-imgs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; width: 100%; margin-left: 0; margin-right: 0; grid-auto-rows: 1fr; padding: 0; box-sizing: border-box; }
-  .process-imgs img { width: 100%; display: block; object-fit: cover; height: 100%; }
-
-  /* Color images - landscape, full-width with consistent 1.1rem spacing */
-  .color-imgs { display: flex; flex-direction: column; gap: 1.1rem; width: 100%; margin-left: 0; margin-right: 0; padding: 0; box-sizing: border-box; }
-  .color-imgs img { width: 100%; display: block; margin: 0; }
-
-  /* Collection images - FLUSH to edges */
-  .seq { display: flex; flex-direction: column; gap: 1.1rem; padding: 0; margin: 2.2rem 0 0; width: 100%; }
-  .seq img { width: 100%; display: block; }
-  .seq .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-  .seq .full { width: 100%; }
+  /* Single landscape or portrait: full width */
+  .group.single-landscape img,
+  .group.single-portrait img { width: 100%; display: block; }
 
   @media (max-width: 800px) {
-    .project-top { padding-top: 9rem; justify-content: flex-start; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2rem; padding: 2rem var(--pad); margin: 0; width: 100%; }
-    .goal-statement { padding: 2.2rem var(--pad); }
-    .process-sections { padding: 2rem var(--pad); }
-    .process-imgs { grid-template-columns: 1fr; }
-    .seq .two { grid-template-columns: 1fr; }
+    .project-top { justify-content: flex-start; padding-top: 9rem; }
+    .group.two-portrait { grid-template-columns: 1fr; }
   }
 </style>
