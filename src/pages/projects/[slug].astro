@@ -52,8 +52,8 @@ const content = project.images || [];
   .image-grid img { width: 100%; display: block; }
   .image-grid img.portrait { aspect-ratio: 4 / 5; object-fit: cover; }
   .image-grid img.landscape { grid-column: 1 / -1; aspect-ratio: auto; }
-  .content-text { grid-column: 1 / -1; max-width: 38rem; margin: 0.4rem 0; }
-  .content-text p { margin: 0 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); }
+  .content-text { grid-column: 1 / -1; width: 100%; margin: 0.4rem 0; }
+  .content-text p { margin: 0 0 1.1rem; font-size: 0.9rem; line-height: 1.15; color: rgba(0, 0, 0, 0.85); text-align: left; }
   .content-text p:last-child { margin-bottom: 0; }
   @media (max-width: 800px) {
     .project-top { justify-content: flex-start; padding-top: 9rem; }
