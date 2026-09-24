@@ -120,6 +120,24 @@ a { color: inherit; text-decoration: none; }
   .col-left { margin-top: 0; align-items: stretch; }
   .col-right { align-items: stretch; }
   .proj { width: 100% !important; }
+
+  /* Drop the fixed-overlay contrast trick on small screens: the first image's
+     color is unpredictable and often leaves the header illegible. Use a plain
+     static block above the content instead. */
+  .site-header {
+    position: static;
+    width: 100%;
+    height: auto;
+    color: var(--ink);
+    mix-blend-mode: normal;
+    background: var(--bg);
+    z-index: auto;
+  }
+  .site-header a { color: var(--ink); }
+
+  /* Stub pages (Archive) reserved top space to clear the old fixed header;
+     it's static now, so that clearance is no longer needed. */
+  .stub { padding-top: 2rem; }
 }
 
 /* ---- Project page (full-bleed images, inset text) ---- */
@@ -148,3 +166,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .project-page .proj-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .proj-work { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .project-page .project { margin-left: 40vw; width: 60vw; padding-left: 0; }
+
+@media (max-width: 800px) {
+  /* The fixed 40vw/60vw split has no room to breathe on a phone-width screen -
+     stack the project nav above the content instead of squeezing both columns. */
+  .project-page { flex-direction: column; }
+  .project-page .site-header {
+    position: static !important;
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+  .project-page .project { margin-left: 0; width: 100%; }
+}
