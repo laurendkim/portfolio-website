@@ -19,7 +19,7 @@ const seaDesc = `Created for lululemon's annual SeaWheeze collection, the Race P
 const lnySub = "Seamless | Jacquard | Print Development\nlululemon | Lunar New Year Collection, Winter '22";
 const lnyType = `Seamless | Jacquard | Print Development`;
 const lnyMeta = `\nlululemon | Lunar New Year Collection, Winter '22`;
-const lnyDesc = `Abstract camouflage inspired by the Year of the Rabbit, balancing symbolism with performance. The artwork was engineered across three distinct constructions: a tonal seamless knit, an oversized jacquard for sweaters and outerwear, and an all-over print for technical activewear. Launched globally across North America and APAC, the collection reimagined a traditional Lunar New Year motif through a contemporary athletic lens.`;
+const lnyDesc = `Abstract camouflage inspired by the Year of the Rabbit, balancing symbolism with performance. The artwork was engineered across three distinct constructions: a tonal seamless knit, an oversized jacquard for sweaters + outerwear, an all-over print for technical activewear + accessories, and embroidery for accessories. Launched globally across North America and APAC, the collection reimagined a traditional Lunar New Year motif through a contemporary athletic lens.`;
 
 const cuupSub = "Print Development\nCUUP | Swimwear Collection, Summer '23";
 const cuupType = `Print Development`;
